@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Starship">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles.css">
+	<title>StarShips</title>
+</head>
+<body ng-controller="homeCtrl">
+<div class="title">
+			<h2>List of Star Wars characters and their starships.</h2>
+		</div>
+<main class="wrapper">
+	
+	<div class="characters">
+
+		<ul class="character-list" ng-repeat="person in people">
+			<li>
+				<div class="character">
+					<h3>{{person.name}}</h3>
+					<p>Gender - {{person.gender}}</p>
+					<p>Hair Color - {{person.hair_color}}</p>
+					<p>Eye Color - {{person.eye_color}}</p>
+					<button class="btn btn-primary" ng-click="getStarships(person.starships)">Get {{person.starships.length}} starships</button>
+				</div>
+				<hr />
+			</li>
+		</ul>
+		<div class="btn-nextpage">
+			<button class="btn btn-primary" ng-click="getNextPage()">More Characters</button>
+		</div>
+	</div>
+
+	<div class="starships">
+		<ul class="ship-list">
+			<li ng-repeat="ship in starships">
+				<div class="ship">
+					<h3>Name: {{ship.name}}</h3>
+					<h4>Manufacturer: {{ship.manufacturer}}</h4>
+					<p>Cost: {{ship.cost_in_credits}}</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+<script src="src/app.js"></script>
+<script src="src/homeCtrl.js"></script>
+<script src="src/starshipService.js"></script>
+</body>
+</html>
